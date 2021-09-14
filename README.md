@@ -131,7 +131,15 @@ Example:
 ```
 artisan iseed users --max=10 --orderby=id --direction=desc
 ```
+### whereint
+Optional parameter which defines the column, operator and an integer which will be used to search in the database with.
+When the operator is not defined '=' is used by default.
 
+Example:
+```
+artisan iseed users --whereint=id_group,5
+artisan iseed users --whereint=id_group,'<',5
+```
 ### exclude
 Optional parameter which accepts comma separated list of columns that you'd like to exclude from tables that are being exported. In case of multiple tables, exclusion will be applied to all of them.
 
