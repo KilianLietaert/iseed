@@ -65,6 +65,7 @@ class IseedCommand extends Command
         $orderBy = $this->option('orderby');
         $direction = $this->option('direction');
         $whereInt = $this->option('whereint');
+        $whereString = $this->option('wherestring');
         $prefix = $this->option('classnameprefix');
         $suffix = $this->option('classnamesuffix');
 
@@ -109,7 +110,8 @@ class IseedCommand extends Command
                         $indexed,
                         $orderBy,
                         $direction,
-                        $whereInt
+                        $whereInt,
+                        $whereString
                     ),
                     $table
                 );
@@ -133,7 +135,8 @@ class IseedCommand extends Command
                         $indexed,
                         $orderBy,
                         $direction,
-                        $whereInt
+                        $whereInt,
+                        $whereString
                     ),
                     $table
                 );
@@ -176,6 +179,7 @@ class IseedCommand extends Command
             array('orderby', null, InputOption::VALUE_OPTIONAL, 'orderby desc by column', null),
             array('direction', null, InputOption::VALUE_OPTIONAL, 'orderby direction', null),
             array('whereint', null, InputOption::VALUE_OPTIONAL, 'select on integer', null),
+            array('wherestring', null, InputOption::VALUE_OPTIONAL, 'select on string', null),
             array('classnameprefix', null, InputOption::VALUE_OPTIONAL, 'prefix for class and file name', null),
             array('classnamesuffix', null, InputOption::VALUE_OPTIONAL, 'suffix for class and file name', null),
         );

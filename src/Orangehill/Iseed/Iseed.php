@@ -63,7 +63,7 @@ class Iseed
      * @throws Orangehill\Iseed\TableNotFoundException
      * @return bool
      */
-    public function generateSeed($table, $prefix = null, $suffix = null, $database = null, $max = 0, $chunkSize = 0, $exclude = null, $prerunEvent = null, $postrunEvent = null, $dumpAuto = true, $indexed = true, $orderBy = null, $direction = 'ASC', $where = null)
+    public function generateSeed($table, $prefix = null, $suffix = null, $database = null, $max = 0, $chunkSize = 0, $exclude = null, $prerunEvent = null, $postrunEvent = null, $dumpAuto = true, $indexed = true, $orderBy = null, $direction = 'ASC', $whereInt = null, $whereString = null)
     {
         if (!$database) {
             $database = config('database.default');
@@ -77,7 +77,7 @@ class Iseed
         }
 
         // Get the data
-        $data = $this->getData($table, $max, $exclude, $orderBy, $direction, $where);
+        $data = $this->getData($table, $max, $exclude, $orderBy, $direction, $whereInt, $whereString);
 
         // Repack the data
         $dataArray = $this->repackSeedData($data);
@@ -134,7 +134,7 @@ class Iseed
      *
      * @return Array
      */
-    public function getData($table, $max, $exclude = null, $orderBy = null, $direction = 'ASC', $whereInt = null)
+    public function getData($table, $max, $exclude = null, $orderBy = null, $direction = 'ASC', $whereInt = null, $whereString = null)
     {
         $result = \DB::connection($this->databaseName)->table($table);
 
@@ -158,6 +158,11 @@ class Iseed
             } else {
                 $result = $result->where($whereInt[0], $whereInt[1], $whereInt[2]);
             }
+        }
+
+        if ($whereString) {
+            $whereString = explode(',', $whereString);
+            $result = $result->where($whereString[0], str_replace('_', ' ', $whereString[1]));
         }
 
         return $result->get();
