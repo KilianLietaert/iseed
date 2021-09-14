@@ -133,7 +133,7 @@ artisan iseed users --max=10 --orderby=id --direction=desc
 ```
 ### whereint
 Optional parameter which defines the column, operator and an integer which will be used to search in the database with.
-When the operator is not defined '=' is used by default.
+When the operator is not defined '=' will be used by default.
 
 Example:
 ```
