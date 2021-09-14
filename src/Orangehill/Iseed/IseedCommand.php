@@ -64,6 +64,7 @@ class IseedCommand extends Command
         $indexed = !$this->option('noindex');
         $orderBy = $this->option('orderby');
         $direction = $this->option('direction');
+        $whereInt = $this->option('whereint');
         $prefix = $this->option('classnameprefix');
         $suffix = $this->option('classnamesuffix');
 
@@ -107,7 +108,8 @@ class IseedCommand extends Command
                         $dumpAuto,
                         $indexed,
                         $orderBy,
-                        $direction
+                        $direction,
+                        $whereInt
                     ),
                     $table
                 );
@@ -128,7 +130,10 @@ class IseedCommand extends Command
                         $prerunEvent,
                         $postrunEvent,
                         $dumpAuto,
-                        $indexed
+                        $indexed,
+                        $orderBy,
+                        $direction,
+                        $whereInt
                     ),
                     $table
                 );
@@ -170,6 +175,7 @@ class IseedCommand extends Command
             array('noindex', null, InputOption::VALUE_NONE, 'no indexing in the seed', null),
             array('orderby', null, InputOption::VALUE_OPTIONAL, 'orderby desc by column', null),
             array('direction', null, InputOption::VALUE_OPTIONAL, 'orderby direction', null),
+            array('whereint', null, InputOption::VALUE_OPTIONAL, 'select on integer', null),
             array('classnameprefix', null, InputOption::VALUE_OPTIONAL, 'prefix for class and file name', null),
             array('classnamesuffix', null, InputOption::VALUE_OPTIONAL, 'suffix for class and file name', null),
         );
