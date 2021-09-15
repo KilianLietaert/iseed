@@ -140,6 +140,15 @@ Example:
 artisan iseed users --whereint=id_group,5
 artisan iseed users --whereint=id_group,'<',5
 ```
+
+### wherestring
+Optional parameter which defines the column and string which will be used to search in the database with.
+Use '_' when you want to use spaces.
+
+Example:
+```
+artisan iseed users --wherestring=name,firstname_lastname
+```
 ### exclude
 Optional parameter which accepts comma separated list of columns that you'd like to exclude from tables that are being exported. In case of multiple tables, exclusion will be applied to all of them.
 
